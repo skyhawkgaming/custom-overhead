@@ -1,10 +1,10 @@
-package com.protectfrombillybob;
+package com.customoverhead;
 
 import net.runelite.api.Prayer;
 import net.runelite.api.SpriteID;
 import net.runelite.client.game.SpriteOverride;
 
-public enum SelectedPrayer implements SpriteOverride {
+public enum ConfiguredPrayer implements SpriteOverride {
     PROTECT_FROM_MAGIC("Protect from Magic", 0, Prayer.PROTECT_FROM_MAGIC),
     PROTECT_FROM_MISSILES("Protect from Missiles", 0, Prayer.PROTECT_FROM_MISSILES),
     // SpriteID.OVERHEAD_PROTECT_FROM_MELEE is 440
@@ -18,7 +18,7 @@ public enum SelectedPrayer implements SpriteOverride {
 
     private final Prayer prayer;
 
-    SelectedPrayer(String prayerName, int spriteID, Prayer prayer) {
+    ConfiguredPrayer(String prayerName, int spriteID, Prayer prayer) {
         this.prayerName = prayerName;
         this.spriteID = spriteID;
         this.prayer = prayer;

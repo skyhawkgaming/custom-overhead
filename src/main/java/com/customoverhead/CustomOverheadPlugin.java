@@ -1,4 +1,4 @@
-package com.protectfrombillybob;
+package com.customoverhead;
 
 import com.google.inject.Provides;
 
@@ -20,13 +20,13 @@ import net.runelite.client.plugins.PluginDescriptor;
 @PluginDescriptor(
         name = "Protect from Billybob"
 )
-public class BillybobPlugin extends Plugin {
-    private SelectedPrayer selectedPrayer;
+public class CustomOverheadPlugin extends Plugin {
+    private ConfiguredPrayer configuredPrayer;
     @Inject
     private Client client;
 
     @Inject
-    private BillybobConfig config;
+    private CustomOverheadConfig config;
 
     @Inject
     private SpriteManager spriteManager;
@@ -42,40 +42,41 @@ public class BillybobPlugin extends Plugin {
     }
 
     @Provides
-    BillybobConfig provideConfig(ConfigManager configManager) {
-        return configManager.getConfig(BillybobConfig.class);
+    CustomOverheadConfig provideConfig(ConfigManager configManager) {
+        return configManager.getConfig(CustomOverheadConfig.class);
     }
 
     @Subscribe
     public void onGameStateChanged(GameStateChanged gameStateChanged) {
-        selectedPrayer = config.getSelectedPrayer();
+        configuredPrayer = config.getConfiguredPrayer();
 
-        if (gameStateChanged.getGameState() == GameState.LOGGED_IN && selectedPrayer != null) {
-            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "Billybob", "Selected Prayer: " + selectedPrayer.getName(), null);
+        if (gameStateChanged.getGameState() == GameState.LOGGED_IN && configuredPrayer != null) {
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "Billybob", "Selected Prayer: " + configuredPrayer.getName(), null);
         }
     }
 
     @Subscribe
     public void onGameTick(GameTick event) {
+        configuredPrayer = config.getConfiguredPrayer();
 
         boolean prayerActive = client.isPrayerActive(
-                selectedPrayer.getPrayer()
+                configuredPrayer.getPrayer()
         );
 
 
-    /*  @TODO: IMPLEMENT THIS :)
+        //@TODO: IMPLEMENT THIS :)
 
-        if (
-                config.getSelectedPrayer() != null && prayerActive
-        ) {
-            spriteManager.addSpriteOverrides(
-
-            );
-        } else {
-            spriteManager.removeSpriteOverrides(
-
-            );
-        } */
+//        if (
+//                config.getConfiguredPrayer() != null && prayerActive
+//        ) {
+//            spriteManager.addSpriteOverrides(
+//
+//            );
+//        } else {
+//            spriteManager.removeSpriteOverrides(
+//
+//            );
+//        }
 
 
         System.out.println(prayerActive);
