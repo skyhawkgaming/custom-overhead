@@ -1,2 +1,2 @@
-# Example
-An example greeter plugin
+# Custom Overhead Prayer
+A Plugin to change an Overhead Prayer Icon to an image of your choosing. 
