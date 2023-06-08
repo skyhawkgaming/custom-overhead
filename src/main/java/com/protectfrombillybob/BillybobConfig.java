@@ -12,14 +12,9 @@ public interface BillybobConfig extends Config {
             description = "Select the prayer whose icon should be replaced",
             position = 1
     )
-    default Prayer getSelectedPrayer() {
-        return Prayer.RETRIBUTION;
+    default SelectedPrayer getSelectedPrayer() {
+        return SelectedPrayer.PROTECT_FROM_MELEE;
     }
 
-    @ConfigItem(
-            keyName = "selectedPrayer",
-            name = "Prayer",
-            description = "Select the prayer whose icon should be replaced"
-    )
-    void setSelectedPrayer(Prayer prayer);
+    void setSelectedPrayer(SelectedPrayer prayer);
 }
