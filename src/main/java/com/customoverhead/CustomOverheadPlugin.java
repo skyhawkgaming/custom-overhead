@@ -18,7 +18,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-        name = "Protect from Billybob"
+        name = "Custom Overhead Prayer"
 )
 public class CustomOverheadPlugin extends Plugin {
     private ConfiguredPrayer configuredPrayer;
